@@ -1,6 +1,5 @@
 ## remap prefix so I can interact w/ server machines
 unbind C-b
-#unbind C-a
 
 set-option -g prefix C-a
 bind-key C-a send-prefix
