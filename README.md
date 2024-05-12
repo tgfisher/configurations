@@ -19,6 +19,12 @@ git submodule update
 
 Window manager.
 
+This tmux config uses **tpm**. Add this repo before starting a tmux session.
+
+```bash
+git clone git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
+```
+
 ```bash
 mkdir ~/.config/tmux
 ln -s $CONFIG_REPO/tmux.common ~/.config/tmux/tmux.conf # if this is a laptop then `tmux.laptop`
