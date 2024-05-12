@@ -1,0 +1,76 @@
+## remap prefix so I can interact w/ server machines
+unbind C-b
+#unbind C-a
+
+set-option -g prefix C-a
+bind-key C-a send-prefix
+
+bind r source-file ~/.config/tmux/tmux.conf \; \
+	display-message "source-file done!"
+
+bind-key h select-pane -L
+bind-key l select-pane -R
+bind-key k select-pane -U
+bind-key j select-pane -D
+
+# better for speed on server machines
+set -sg escape-time 0
+
+# status bar change from green
+# original - set -g status-style 'fg=black bg=green'
+set -g status-style 'fg=colour128' # bold'
+
+# when I use windows it is nice to have them listed in status
+setw -g window-status-style 'fg=colour239' #fg is current window id number and bg is background
+setw -g window-status-format ' #I#[fg=colour239]:#[fg=colour128]#W#[fg=colour239]#F ' #colon color, name color, star color
+
+setw -g window-status-current-style 'fg=colour247' #'255'
+setw -g window-status-current-format ' #I#[fg=colour247]:#[fg=colour1]#W#[fg=colour247]#F '
+
+# feeling lazy use the mouse
+set -g mouse on
+
+# List of plugins
+set -g @plugin 'tmux-plugins/tpm'
+set -g @plugin 'tmux-plugin/tmux-resurrect' # this allows tmux sessions to be saved and then recovered, 
+set -g @plugin 'tmux-plugin/tmux-continuum' # continuous saving for above ^, check ~/.tmux/resurrect/ for restore files
+set -g @plugin 'tmux-plugins/tmux-sensible'
+
+# Other examples:
+# set -g @plugin 'github_username/plugin_name'
+# set -g @plugin 'git@github.com/user/plugin'
+# set -g @plugin 'git@bitbucket.com/user/plugin'
+
+## --- Setting Colors --- ##
+## I'm leaving in some of the things that I tried along the way below. Basically,
+## how the terminal emulator and tmux interact can cause issues with the colors
+## that tmux ends up showing you. I noticed while customizing my setup that there 
+## were some pretty serious issues with the way that the colors were getting rendered
+## after moving to alacrity.
+
+#set -g default-terminal "alacritty"
+#set -g default-terminal "screen-256color" # loose italic with screen, this is default
+#set -g default-terminal "xterm-256color" # keep italics with xterm
+
+## one option for getting colors working -- doesn't seem to work for me
+#set -g default-terminal "tmux-256color"
+#set -ag terminal-overrides ",xterm-256color:RGB"
+
+## another option for getting colors working -- this works for me
+#set -sg terminal-overrides ",*:RGB"
+
+## another, another option for getting colors working -- this works for me
+#set -sg terminal-overrides ",$TERM:Tc"
+
+## seemingly universal for getting colors and italics
+set -g default-terminal "xterm-256color"
+set -sg terminal-overrides ",$TERM:Tc" # true color
+
+# automatically start tmux on boot (for continuum)
+#set -g @continuum-boot 'on'
+
+# synchronize panes toggler (equiv to :setw synchronize-panes on/off) 
+bind C-Y set-window-option synchronize-panes
+
+## Initialize TMUX plugin manager (keep this line at the very bottom of tmux.conf)
+run -b '~/.tmux/plugins/tpm/tpm'
