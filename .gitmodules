@@ -1,0 +1,3 @@
+[submodule "ksnvim"]
+	path = ksnvim
+	url = https://github.com/tgfisher/ksnvim

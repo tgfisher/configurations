@@ -20,7 +20,7 @@ ln -s $CONFIG_REPO/tmux.common ~/.config/tmux/tmux.conf # if this is a laptop th
 A good configurable editor
 
 ```
-ln -s $CONFIG_REPO/nvim ~/.config/nvim
+ln -s $CONFIG_REPO/ksnvim ~/.config/nvim
 ```
 
 
