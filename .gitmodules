@@ -1,3 +1,6 @@
 [submodule "ksnvim"]
 	path = ksnvim
 	url = https://github.com/tgfisher/ksnvim
+[submodule "alacritty/alacritty-theme"]
+	path = alacritty/alacritty-theme
+	url = https://github.com/alacritty/alacritty-theme.git
