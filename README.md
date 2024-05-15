@@ -15,6 +15,18 @@ git submodule init
 git submodule update
 ```
 
+# Alacritty
+
+```bash
+cd $CONFIG_REPO/alacritty
+chmod u+x ./initial_setup.sh
+./initial_setup.sh # to get started
+python3 ./write_toml_from_template.py
+ln -s $CONFIG_REPO/alacritty ~/.config/alacritty
+
+```
+
+
 # Tmux
 
 Window manager.

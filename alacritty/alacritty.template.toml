@@ -1,0 +1,39 @@
+import = [
+  #daytime# "$alacritty_config_dir/alacritty-theme/themes/catppuccin_latte.toml",
+  #daytime# "$alacritty_config_dir/alacritty-theme/themes/high_contrast.toml",
+  #daytime# "$alacritty_config_dir/alacritty-theme/themes/night_owlish_light.toml",
+  #darkmode#" $alacritty_config_dir/alacritty-theme/themes/gruvbox_dark.toml"
+  #darkmode#" $alacritty_config_dir/alacritty-theme/themes/catppuccin.toml",
+  #darkmode#" $alacritty_config_dir/alacritty-theme/themes/tokyo-night-storm.toml",
+  "$alacritty_config_dir/alacritty-theme/themes/dracula.toml",
+]
+
+[window]
+padding = { x = 15, y = 15 }
+decorations = "Buttonless"
+dynamic_title = true
+opacity = 1.0
+
+[font]
+size = 13.0
+normal = { family = "MesloLGSDZ Nerd Font Mono", style = "Regular" }
+
+[mouse]
+hide_when_typing = true 
+
+[keyboard]
+# codepoints.net are useful for finding the unicode
+# the `showkey` tool is useful for visualizing keystrokes
+bindings = [
+  # these are to get my favorite programmable keymaps onto my laptop within the terminal
+  { key = "K", mods = "Control", chars = "\u001b[A" }, #<ESC>[A 'up'
+  { key = "J", mods = "Control", chars = "\u001b[B" }, #<ESC>[B 'down'
+  { key = "H", mods = "Control", chars = "\u001b[D" }, #<ESC>[D 'left'
+  { key = "L", mods = "Control", chars = "\u001b[C" }, #<ESC>[C 'right'
+  # nice word jump remaps for moving by word on the command line
+  { key = "H", mods = "Control|Shift", chars = "\u001bB" }, # <ESC>B
+  { key = "L", mods = "Control|Shift", chars = "\u001bF" }, # <ESC>F
+  # custom things
+  { key = "H", mods = "Control|Command", action = "HideOtherApplications"},
+  { key = "U", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_opacity.py"] } },
+]
