@@ -44,6 +44,8 @@ chmod u+x choose_conf.sh
 ln -s $CONFIG_REPO/tmux ~/.config/tmux
 ```
 
+`Ctrl-<leader> I` to install tpm
+
 # Nvim
 
 A good configurable editor
