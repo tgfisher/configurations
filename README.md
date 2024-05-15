@@ -26,8 +26,10 @@ git clone git clone https://github.com/tmux-plugins/tpm ~/.tmux/plugins/tpm
 ```
 
 ```bash
-mkdir ~/.config/tmux
-ln -s $CONFIG_REPO/tmux.common ~/.config/tmux/tmux.conf # if this is a laptop then `tmux.laptop`
+cd $CONFIG_REPO/tmux
+chmod u+x choose_conf.sh
+./choose_conf.sh tmux.leader_<your_choice>
+ln -s $CONFIG_REPO/tmux ~/.config/tmux
 ```
 
 # Nvim

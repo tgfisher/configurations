@@ -4,4 +4,4 @@ unbind C-b
 set-option -g prefix C-a
 bind-key C-a send-prefix
 
-source-file $CONFIG_REPO/tmux.common
+source-file ./tmux.common
