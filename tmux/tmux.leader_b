@@ -1,1 +1,1 @@
-source-file ./tmux.common
+source-file ~/.config/tmux/tmux.common

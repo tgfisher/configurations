@@ -1,3 +1,4 @@
 tmux/tmux.conf
+tmux/plugins
 alacritty/.old.alacritty.toml
 alacritty.toml
