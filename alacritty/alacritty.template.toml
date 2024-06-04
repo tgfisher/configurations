@@ -13,6 +13,7 @@ padding = { x = 15, y = 15 }
 decorations = "Buttonless"
 dynamic_title = true
 opacity = 1.0
+blur = true
 
 [font]
 size = 13.0
@@ -28,12 +29,13 @@ bindings = [
   # these are to get my favorite programmable keymaps onto my laptop within the terminal
   { key = "K", mods = "Control", chars = "\u001b[A" }, #<ESC>[A 'up'
   { key = "J", mods = "Control", chars = "\u001b[B" }, #<ESC>[B 'down'
-  { key = "H", mods = "Control", chars = "\u001b[D" }, #<ESC>[D 'left'
-  { key = "L", mods = "Control", chars = "\u001b[C" }, #<ESC>[C 'right'
+  # collides with previous item in lua snip # { key = "H", mods = "Control", chars = "\u001b[D" }, #<ESC>[D 'left'
+  # collids with next item in lua snip # { key = "L", mods = "Control", chars = "\u001b[C" }, #<ESC>[C 'right'
   # nice word jump remaps for moving by word on the command line
   { key = "H", mods = "Control|Shift", chars = "\u001bB" }, # <ESC>B
   { key = "L", mods = "Control|Shift", chars = "\u001bF" }, # <ESC>F
   # custom things
   { key = "H", mods = "Control|Command", action = "HideOtherApplications"},
   { key = "U", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_opacity.py"] } },
+  { key = "I", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_blur.py"] } },
 ]
