@@ -10,19 +10,30 @@ import = [
   "$alacritty_config_dir/alacritty-theme/themes/dracula.toml",
 ]
 
+live_config_reload = true
+
 [window]
-padding = { x = 15, y = 15 }
+padding = { x = 5, y = 5 }
 decorations = "Buttonless"
 dynamic_title = true
-opacity = 1.0
+title = ""
+opacity = 0.9
 blur = true
+
+[bell]
+duration = 0
 
 [font]
 size = 13.0
 normal = { family = "MesloLGSDZ Nerd Font Mono", style = "Regular" }
+builtin_box_drawing = true 
 
 [mouse]
 hide_when_typing = true 
+
+[cursor]
+style = { shape = "Underline", blinking = "Off" }
+thickness = 0.35
 
 [keyboard]
 # codepoints.net are useful for finding the unicode
