@@ -1,13 +1,18 @@
 import = [
-  #optdaytime# "$alacritty_config_dir/alacritty-theme/themes/catppuccin_latte.toml",
-  #optdaytime# "$alacritty_config_dir/alacritty-theme/themes/high_contrast.toml",
-  #optdaytime# "$alacritty_config_dir/alacritty-theme/themes/night_owlish_light.toml",
-  #optdarkmode#" $alacritty_config_dir/alacritty-theme/themes/gruvbox_dark.toml"
-  #optdarkmode#" $alacritty_config_dir/alacritty-theme/themes/catppuccin.toml",
-  #optdarkmode#" $alacritty_config_dir/alacritty-theme/themes/tokyo-night-storm.toml",
-  ---
-  #daytime# "$alacritty_config_dir/alacritty-theme/themes/rose-pine-dawn.toml",
-  "$alacritty_config_dir/alacritty-theme/themes/dracula.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/high_contrast.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/night_owlish_light.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/github_light_high_contrast.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/github_light_colorblind.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/ayu_light.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/gruvbox_dark.toml"
+  #"$alacritty_config_dir/alacritty-theme/themes/catppuccin.toml",
+  "$alacritty_config_dir/alacritty-theme/themes/tokyo-night-storm.toml", #theme_choice 0
+  #"$alacritty_config_dir/alacritty-theme/themes/catppuccin_latte.toml", #theme_choice 2
+  #"$alacritty_config_dir/alacritty-theme/themes/rose-pine-dawn.toml", #theme_choice 1
+  #"$alacritty_config_dir/alacritty-theme/themes/papercolor_light.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/pencil_light.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/noctis-lux.toml",
+  #"$alacritty_config_dir/alacritty-theme/themes/dracula.toml", #theme_choice 3
 ]
 
 live_config_reload = true
@@ -51,4 +56,5 @@ bindings = [
   { key = "H", mods = "Control|Command", action = "HideOtherApplications"},
   { key = "U", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_opacity.py"] } },
   { key = "I", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_blur.py"] } },
+  { key = "L", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_theme.py"] } },
 ]
