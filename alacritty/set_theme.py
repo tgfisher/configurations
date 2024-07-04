@@ -1,5 +1,5 @@
+import sys
 from typing import Tuple
-
 from pathlib import Path
 
 path = Path(__file__).parent
@@ -35,6 +35,7 @@ class ThemeChoiceLine():
 
     @property
     def enum(self) -> int:
+        """current enumeration of the themeline. 0 is current."""
         return self._enum
 
     @property
@@ -44,6 +45,8 @@ class ThemeChoiceLine():
 
     @property
     def toml_str(self) -> str:
+        """The theme line that can be written directly to a config file within
+        an import list. Make sure that the `OFF_STR` and `ON_STR` match."""
         return ThemeChoiceLine.build_themeline(self._theme_path, self._enum, self._tag)
     
     @staticmethod
@@ -68,6 +71,11 @@ class ThemeChoiceLine():
         return (enum + 1) % n_enums
 
     @staticmethod
+    def decriment_enum(enum: int, n_enums: int) -> int:
+        """Wrap around decrimenting."""
+        return ( enum + (n_enums - 1) ) % n_enums
+
+    @staticmethod
     def parse_raw_themechoice_line(raw_line: str, theme_tag: str) -> Tuple[Path,int]:
 
         def _extract_path(path_portion: str) -> str:
@@ -88,6 +96,9 @@ class ThemeChoiceLine():
 
     def increment(self, n_enums: int) -> None:
         self._enum = ThemeChoiceLine.increment_enum(self.enum, n_enums)
+
+    def decriment(self, n_enums: int) -> None:
+        self._enum = ThemeChoiceLine.decriment_enum(self.enum, n_enums)
 
 def compute_n_enums(enums: list) -> int:
     """using the raw themelines, determine the number of enums"""
@@ -116,7 +127,7 @@ def parse_config_for_theme_choices(toml_filepath):
     print("\t...done")
     return theme_choices
 
-def increment_themelines(toml_filepath, n_enums):
+def increment_themelines(toml_filepath, n_enums, direction):
 
     updated_lines = []
     print("incrementing:", end=" ")
@@ -125,7 +136,10 @@ def increment_themelines(toml_filepath, n_enums):
             try:
                 theme_path, enum = ThemeChoiceLine.parse_raw_themechoice_line(line, THEME_TAG)
                 this_theme = ThemeChoiceLine(enum, theme_path)
-                this_theme.increment(n_enums)
+                if direction == "reverse":
+                    this_theme.increment(n_enums)
+                else:
+                    this_theme.decriment(n_enums)
                 updated_lines.append(this_theme.toml_str + "\n")
                 print(f"({enum}:{this_theme.enum})", end="")
             except NoThemePathError:
@@ -139,12 +153,13 @@ def increment_themelines(toml_filepath, n_enums):
 
     print("\t...done")
 
-def loop_through_themes():
+def loop_through_themes(direction):
     config_path = path.joinpath("alacritty.toml")
 
     theme_choices = parse_config_for_theme_choices(config_path)
     n_enums = compute_n_enums([tc.enum for tc in theme_choices])
-    increment_themelines(config_path, n_enums)
+    increment_themelines(config_path, n_enums, direction)
                 
 if __name__ == "__main__":
-    loop_through_themes()
+    _, direction = sys.argv
+    loop_through_themes(direction)

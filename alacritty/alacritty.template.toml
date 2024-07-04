@@ -56,5 +56,6 @@ bindings = [
   { key = "H", mods = "Control|Command", action = "HideOtherApplications"},
   { key = "U", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_opacity.py"] } },
   { key = "I", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_blur.py"] } },
-  { key = "L", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_theme.py"] } },
+  { key = "O", mods = "Command", command = { program = "python3", args = ["$alacritty_config_dir/set_theme.py", "forward"] } },
+  { key = "L", mods = "Command", command = { program = "python3", args = ["/Users/tgfisher/local_repos/configuration/alacritty/set_theme.py", "reverse"] } },
 ]
