@@ -41,7 +41,7 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 ## were some pretty serious issues with the way that the colors were getting rendered
 ## after moving to alacrity.
 
-#set -g default-terminal "alacritty"
+set -g default-terminal "alacritty"
 #set -g default-terminal "screen-256color" # loose italic with screen, this is default
 #set -g default-terminal "xterm-256color" # keep italics with xterm
 
@@ -56,8 +56,8 @@ set -g @plugin 'tmux-plugins/tmux-sensible'
 #set -sg terminal-overrides ",$TERM:Tc"
 
 ## seemingly universal for getting colors and italics
-set -g default-terminal "xterm-256color"
-set -sg terminal-overrides ",$TERM:Tc" # true color
+# most current #set -g default-terminal "xterm-256color"
+# most current #set -sg terminal-overrides ",$TERM:Tc" # true color
 
 # automatically start tmux on boot (for continuum)
 #set -g @continuum-boot 'on'
